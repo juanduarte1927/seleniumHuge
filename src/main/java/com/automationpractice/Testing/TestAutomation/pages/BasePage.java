@@ -22,6 +22,10 @@ public class BasePage {
 		element.sendKeys(word);
 	}
 
+	public void clearField(WebElement element){
+		element.clear();
+	}
+
 	public void waitVisibility(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}

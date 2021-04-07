@@ -12,6 +12,9 @@ public class ProductOverviewPage extends BasePage {
 	@FindBy(name = "Submit")
 	private WebElement buttonAddToCart;
 
+	@FindBy(id = "quantity_wanted")
+	private WebElement productQuantity;
+
 	@FindBy(xpath = "//a[@class='btn btn-default button button-medium']//span")
 	private WebElement buttonProceedToCheckout;
 
@@ -21,6 +24,12 @@ public class ProductOverviewPage extends BasePage {
 	public ProductOverviewPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
+	}
+
+	public void setQuantity(String quantity){
+		waitVisibility(productQuantity);
+		clearField(productQuantity);
+		writeText(productQuantity, quantity);
 	}
 
 	public void addToShoppingCart() {

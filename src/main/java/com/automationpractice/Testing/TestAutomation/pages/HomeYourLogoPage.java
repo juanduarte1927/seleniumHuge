@@ -11,6 +11,9 @@ public class HomeYourLogoPage extends BasePage {
 	@FindBy(id = "search_query_top")
 	private WebElement inputSearch;
 
+	@FindBy(className = "login")
+	private WebElement signInButton;
+
 	public HomeYourLogoPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
@@ -25,5 +28,8 @@ public class HomeYourLogoPage extends BasePage {
 		waitVisibility(inputSearch);
 		writeText(inputSearch, product);
 		inputSearch.submit();
+	}
+	public void goToSignInPage(){
+		click(signInButton);
 	}
 }

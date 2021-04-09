@@ -21,6 +21,9 @@ public class ProductOverviewPage extends BasePage {
 	@FindBy(className = "navigation_page")
 	private WebElement labelYourShoppingCart;
 
+	@FindBy(id = "quantity_wanted")
+	private WebElement productQuantity;
+
 	public ProductOverviewPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
@@ -39,6 +42,12 @@ public class ProductOverviewPage extends BasePage {
 		click(buttonProceedToCheckout);
 		StaticWait.WaitForSeconds(2);
 		waitVisibility(labelYourShoppingCart);
+	}
+
+	public void setProductQuantity(String quantity){
+		waitVisibility(productQuantity);
+		clearField(productQuantity);
+		writeText(productQuantity, quantity);
 	}
 
 }

@@ -2,7 +2,6 @@ package com.automationpractice.Testing.TestAutomation.stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
-import cucumber.api.java.en.And;
 import org.openqa.selenium.WebDriver;
 
 import com.automationpractice.Testing.TestAutomation.pages.HomeYourLogoPage;
@@ -25,24 +24,18 @@ public class ProductToTheShoppingCartStepDefinitions {
 		PageGenerator.getInstance(HomeYourLogoPage.class, driver).goToThePage();
 	}
 
-	@When("^I look for '(.*)' and select any displayed result$")
-	public void iLookForDressAndSelectAny(String product) throws Throwable {
+	@When("^I look for '(.*)' select any displayed result and add '(.*)' products to go to the shopping cart$")
+	public void iLookForDressAndSelectAny(String product, String quantity) throws Throwable {
 
 		PageGenerator.getInstance(HomeYourLogoPage.class, driver).findProduct(product);
 		PageGenerator.getInstance(SearchResultsPage.class, driver).chooseRandomProduct();
-		//PageGenerator.getInstance(ProductOverviewPage.class, driver).addToShoppingCart();
-	}
-
-	@And("^I add '(.*)' products to go to the shopping cart$")
-	public void iAddProducts(String amount) throws Throwable {
-
-		PageGenerator.getInstance(ProductOverviewPage.class, driver).setQuantity(amount);
+		PageGenerator.getInstance(ProductOverviewPage.class, driver).setProductQuantity(quantity);
 		PageGenerator.getInstance(ProductOverviewPage.class, driver).addToShoppingCart();
 	}
 
-	@Then("^should the shopping cart show the product amount '(.*)'$")
-	public void inTheShoppingCartShowTheProductIsNotNullWithQuantityNotNull(String result) throws Throwable {
-		//
-		assertEquals(result, PageGenerator.getInstance(ShoppingCartSummary.class, driver).shoppingCartAmount());
+	@Then("^should the shopping cart show the product is not '(.*)' and quantity should be '(.*)'$")
+	public void inTheShoppingCartShowTheProductIsNotNullWithQuantityNotNull(String result, String summaryQuantity) throws Throwable {
+		assertEquals(result, PageGenerator.getInstance(ShoppingCartSummary.class, driver).validateShoppingCart());
+		assertEquals(summaryQuantity, PageGenerator.getInstance(ShoppingCartSummary.class, driver).validateProductQuantity());
 	}
 }

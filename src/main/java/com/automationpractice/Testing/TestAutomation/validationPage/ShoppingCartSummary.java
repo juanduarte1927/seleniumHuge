@@ -12,7 +12,7 @@ public class ShoppingCartSummary extends BasePage {
 	private WebElement productInShoppingCart;
 
 	@FindBy(xpath = "//input[@class='cart_quantity_input form-control grey']")
-	private WebElement productQuantityInShoppingCart;
+	private WebElement productQuantitySummary;
 
 	public ShoppingCartSummary(WebDriver driver) {
 		super(driver);
@@ -21,7 +21,6 @@ public class ShoppingCartSummary extends BasePage {
 	public String validateShoppingCart() {
 		return exists(productInShoppingCart);
 	}
-
-	public String shoppingCartAmount(){ return productQuantityInShoppingCart.getAttribute("value");}
+	public String validateProductQuantity(){return productQuantitySummary.getAttribute("size");}
 
 }

@@ -35,4 +35,15 @@ public class BasePage {
 		}
 	}
 
+	public boolean existsElement(WebElement element) {
+		waitVisibility(element);
+		if(element.isDisplayed()){
+		return true;
+		}
+		else {
+			return false;
+		}
+
+	}
+
 }

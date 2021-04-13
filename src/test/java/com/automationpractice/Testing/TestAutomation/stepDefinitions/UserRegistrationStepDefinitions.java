@@ -1,5 +1,6 @@
 package com.automationpractice.Testing.TestAutomation.stepDefinitions;
 
+import com.automationpractice.Testing.TestAutomation.pages.BasePage;
 import com.automationpractice.Testing.TestAutomation.pages.HomeYourLogoPage;
 import com.automationpractice.Testing.TestAutomation.pages.RegistrationForm;
 import com.automationpractice.Testing.TestAutomation.pages.UserRegistrationPage;
@@ -12,8 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.PageGenerator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class UserRegistrationStepDefinitions {
     protected WebDriver driver = Hook.getDriver();
@@ -36,8 +36,9 @@ public class UserRegistrationStepDefinitions {
 
     @Then("^should the create account form be shown$")
     public void shouldTheCreateAccountFormBeShown() throws Throwable{
-        System.out.println("Result"+ PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
-        //assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
+       // System.out.println("Result"+ PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
+        assertTrue(PageGenerator.getInstance(RegistrationForm.class, driver).formExists());
+       // assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
         //assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
     }
 }

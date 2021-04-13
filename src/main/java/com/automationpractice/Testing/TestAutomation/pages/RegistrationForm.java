@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationForm extends BasePage {
 
-    @FindBy(tagName = "Lorena")
+    @FindBy(xpath = "//h1[normalize-space()='Create an account']")
     private WebElement accountCreationForm;
 
     public RegistrationForm (WebDriver driver) {
@@ -17,6 +17,10 @@ public class RegistrationForm extends BasePage {
 
     public WebElement getFormTag() {
         return accountCreationForm;
+    }
+
+    public boolean formExists(){
+        return existsElement(accountCreationForm);
     }
 }
 

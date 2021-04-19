@@ -30,6 +30,7 @@ public class HomeYourLogoPage extends BasePage {
 		inputSearch.submit();
 	}
 	public void goToSignInPage(){
+		waitVisibility(signInButton);
 		click(signInButton);
 	}
 }

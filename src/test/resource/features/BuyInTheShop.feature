@@ -9,9 +9,14 @@ Feature: Automated the your logo page
       |item|
       |"dress"|
       |"T-shirt"|
-
-  Scenario: Register an user
+@test
+  Scenario Outline: Register an user
     Given that I opened the automationpractice page
-    And  I click on Sign-in
-    When I enter an email 'test2221@gmail.com'
-    Then  should the create account form be shown
+    When  I want to register a new <Email> into the platform
+    And send the personal information <Title> <FirstName> <LastName> <Email> <Password>
+    And address details <Address> <City> <State> <Zip> <Phone>
+    Then the new user should be created and the user see the message Welcome to your account. Here you can manage all of your personal information and orders.
+
+    Examples:
+      |Title|FirstName|LastName|Email|Password|Address|City|State|Zip|Phone|
+      |Mr|juan|duarte|pweyiqqiqepr@gmail.com|dress|tra 60 114 a 50|Any|Oregon|11111|222222222|

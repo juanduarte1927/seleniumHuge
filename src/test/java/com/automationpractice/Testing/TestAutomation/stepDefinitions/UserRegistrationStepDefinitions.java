@@ -1,9 +1,6 @@
 package com.automationpractice.Testing.TestAutomation.stepDefinitions;
 
-import com.automationpractice.Testing.TestAutomation.pages.BasePage;
-import com.automationpractice.Testing.TestAutomation.pages.HomeYourLogoPage;
-import com.automationpractice.Testing.TestAutomation.pages.RegistrationForm;
-import com.automationpractice.Testing.TestAutomation.pages.UserRegistrationPage;
+import com.automationpractice.Testing.TestAutomation.pages.*;
 import com.automationpractice.Testing.TestAutomation.validationPage.ShoppingCartSummary;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -24,15 +21,30 @@ public class UserRegistrationStepDefinitions {
         PageGenerator.getInstance(HomeYourLogoPage.class, driver).goToThePage();
     }
 
-    @And("^I click on Sign-in$")
-    public void iClickOnSignIn() throws Throwable {
+    @And("^I want to register a new (.*) into the platform$")
+    public void iClickOnSignIn(String userEmail) throws Throwable {
         PageGenerator.getInstance(HomeYourLogoPage.class, driver).goToSignInPage();
-    }
-
-    @When("^I enter an email '(.*)'$")
-    public void iEnterAEmail(String userEmail) throws Throwable{
         PageGenerator.getInstance(UserRegistrationPage.class, driver).fillUserRegistrationEmail(userEmail);
     }
+
+    @And("^send the personal information (.*) (.*) (.*) (.*) (.*)$")
+    public void sendPersonalInformation(String title, String firstName, String lastName, String email, String password) throws Throwable {
+        PageGenerator.getInstance(CreateAccountPage.class, driver).fillPersonalInformation(title,firstName,lastName,email, password);
+
+    }
+
+    @And("^address details (.*) (.*) (.*) (.*) (.*)$")
+    public void sendAddressDetails(String address, String city, String state, String zip, String phone) throws Throwable {
+        PageGenerator.getInstance(CreateAccountPage.class, driver).sendAddressDetails(address,city,state,zip,phone);
+
+    }
+
+    @Then("^the new user should be created and the user see the message (.*)$")
+    public void sendAddressDetails(String message) throws Throwable {
+        assertEquals(message, PageGenerator.getInstance(CreateAccountPage.class, driver).verifyMessageAccountCreated());
+
+    }
+
 
     @Then("^should the create account form be shown$")
     public void shouldTheCreateAccountFormBeShown() throws Throwable{

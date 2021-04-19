@@ -20,6 +20,7 @@ public class UserRegistrationPage extends BasePage{
     }
 
     public void fillUserRegistrationEmail(String userEmail){
+        waitVisibility(userEmailField);
         writeText(userEmailField,userEmail);
         click(submitCreate);
     }

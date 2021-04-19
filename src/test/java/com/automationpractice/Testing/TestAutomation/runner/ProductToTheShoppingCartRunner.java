@@ -8,7 +8,10 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = "src/test/resource/features",
-        glue= {"com.automationpractice.Testing.TestAutomation.stepDefinitions"}
+        tags = {"@test"},
+        glue= {"com.automationpractice.Testing.TestAutomation.stepDefinitions"
+
+        }
 )
 public class ProductToTheShoppingCartRunner {
 

@@ -53,6 +53,12 @@ public class UserRegistrationStepDefinitions {
        // assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
         //assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
     }
+
+    @Then("^a '(.*)' error message should be displayed$")
+    public void shouldDisplayAnInValidEmailErrorMessage(String emailErrorMessage) throws Throwable{
+        assertEquals(emailErrorMessage, PageGenerator.getInstance(UserRegistrationPage.class, driver).returnAccountErrorMessage());
+
+    }
 }
 
 

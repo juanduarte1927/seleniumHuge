@@ -21,6 +21,6 @@ public class ShoppingCartSummary extends BasePage {
 	public String validateShoppingCart() {
 		return exists(productInShoppingCart);
 	}
-	public String validateProductQuantity(){return productQuantitySummary.getAttribute("size");}
+	public String validateProductQuantity(){return productQuantitySummary.getAttribute("value");}
 
 }

@@ -24,8 +24,8 @@ public class ProductToTheShoppingCartStepDefinitions {
 		PageGenerator.getInstance(HomeYourLogoPage.class, driver).goToThePage();
 	}
 
-	@When("^I look for '(.*)' select any displayed result and add '(.*)' products to go to the shopping cart$")
-	public void iLookForDressAndSelectAny(String product, String quantity) throws Throwable {
+	@When("^I look for (.*) select any displayed result and add (.*) products to go to the shopping cart$")
+	public void iLookForDressAndSelectAnyAndQuantity(String product, String quantity) throws Throwable {
 
 		PageGenerator.getInstance(HomeYourLogoPage.class, driver).findProduct(product);
 		PageGenerator.getInstance(SearchResultsPage.class, driver).chooseRandomProduct();
@@ -33,9 +33,11 @@ public class ProductToTheShoppingCartStepDefinitions {
 		PageGenerator.getInstance(ProductOverviewPage.class, driver).addToShoppingCart();
 	}
 
-	@Then("^should the shopping cart show the product is not '(.*)' and quantity should be '(.*)'$")
+
+	@Then("^should the shopping cart show the product is not '(.*)' and quantity should be (.*)$")
 	public void inTheShoppingCartShowTheProductIsNotNullWithQuantityNotNull(String result, String summaryQuantity) throws Throwable {
 		assertEquals(result, PageGenerator.getInstance(ShoppingCartSummary.class, driver).validateShoppingCart());
 		assertEquals(summaryQuantity, PageGenerator.getInstance(ShoppingCartSummary.class, driver).validateProductQuantity());
 	}
+
 }

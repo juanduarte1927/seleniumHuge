@@ -21,9 +21,6 @@ public class ProductOverviewPage extends BasePage {
 	@FindBy(className = "navigation_page")
 	private WebElement labelYourShoppingCart;
 
-	@FindBy(id = "quantity_wanted")
-	private WebElement productQuantity;
-
 	public ProductOverviewPage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);

@@ -14,6 +14,9 @@ public class UserRegistrationPage extends BasePage{
     @FindBy(id = "SubmitCreate")
     private WebElement submitCreate;
 
+    @FindBy(xpath = "//*[@id='create_account_error']/ol/li")
+    private WebElement accountErrorMessage;
+
     public UserRegistrationPage (WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -23,6 +26,11 @@ public class UserRegistrationPage extends BasePage{
         waitVisibility(userEmailField);
         writeText(userEmailField,userEmail);
         click(submitCreate);
+    }
+
+    public String returnAccountErrorMessage(){
+        waitVisibility(accountErrorMessage);
+        return accountErrorMessage.getText();
     }
 
 }

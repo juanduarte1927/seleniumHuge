@@ -41,6 +41,22 @@ public class UserRegistrationStepDefinitions {
        // assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
         //assertEquals(PageGenerator.getInstance(RegistrationForm.class, driver).getFormTag());
     }
+    /*@When("^I enter the user information (.*) (.*)'$")
+    public void iEnterTheUserInformationNameLastname(String firstName, String lastName) throws Throwable {
+        PageGenerator.getInstance(RegistrationForm.class, driver).fillTitle();
+        PageGenerator.getInstance(RegistrationForm.class, driver).fillFirstName(firstName);
+        PageGenerator.getInstance(RegistrationForm.class, driver).fillLastName(lastName);}*/
+
+    @Then("^the user is registered$")
+    public void theUserIsRegistered() {
+        System.out.println("Hello World");
+    }
+
+    @When("^I enter the user information (.*) (.*)$")
+    public void iEnterTheUserInformationNameLastname() {
+        System.out.println("test");
+    }
+
 }
 
 

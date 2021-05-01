@@ -15,3 +15,15 @@ Feature: Automated the your logo page
     And  I click on Sign-in
     When I enter an email 'test2221@gmail.com'
     Then  should the create account form be shown
+
+  Scenario Outline: Fill the user form
+    Given that I opened the automationpractice page
+    And  I click on Sign-in
+    When I enter the user information <name> <lastname>
+    Then  the user is registered
+    Examples:
+      |name|lastname|
+      |"Lorena"|"Amaya"|
+
+
+
